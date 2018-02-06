@@ -25,6 +25,9 @@ import static com.note.website.conf.DataSourceConstant.NoteCore.*;
         entityManagerFactoryRef = ENTITY_MANAGER,
         transactionManagerRef = TRANSACTION_MANAGER,
         basePackages = {REPO_PACKAGE})
+/*@PropertySource(value = {"classpath:/application.properties",
+"file:/C:\\Users\\test\\Workplace\\config\\SpringAll\\datasource.properties"},
+ignoreResourceNotFound = true)*/
 public class CoreDataSourceConfiguration extends AbstractMultipleDataSource {
 
     @Bean(name = PROPERTIES)

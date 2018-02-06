@@ -22,6 +22,9 @@ import static com.note.website.conf.DataSourceConstant.NoteContent.*;
         entityManagerFactoryRef = ENTITY_MANAGER,
         transactionManagerRef = TRANSACTION_MANAGER,
         basePackages = {REPO_PACKAGE})
+/*@PropertySource(默认：value = {"classpath:/application.properties",
+            "file:/C:\\Users\\test\\Workplace\\config\\SpringAll\\datasource.properties"},
+            ignoreResourceNotFound = true)*/
 public class ContentDataSourceConfiguration extends AbstractMultipleDataSource {
 
     @Bean(name = PROPERTIES)

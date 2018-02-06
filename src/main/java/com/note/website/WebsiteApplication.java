@@ -11,4 +11,3 @@ public class WebsiteApplication {
 		SpringApplication.run(WebsiteApplication.class, args);
 	}
 }
-//通用模版配置https://www.cnblogs.com/clivelee/p/3810006.html
