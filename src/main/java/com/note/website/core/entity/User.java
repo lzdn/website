@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import com.alibaba.fastjson.annotation.JSONType;
 import com.note.website.common.entity.BaseEntity;
 
@@ -22,9 +24,11 @@ public class User extends BaseEntity {
 	@Column(name = "user_id")
 	private Integer userId;
 
+	@NotBlank(message = "姓名不能为空")
 	@Column(name = "user_name", length = 15, nullable = false)
 	private String userName;
 
+	@NotBlank(message = "密码不能为空")
 	@Column(name = "password", length = 15, nullable = false)
 	private String password;
 
