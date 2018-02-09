@@ -51,9 +51,19 @@ public class MainController extends BaseController {
 			map.put("data", sb.toString());
 		} else {
 			map.put("success", true);
+			user.setStatus(1);
 			userService.addUser(user);
 		}
 
+		return new ResponseEntity<>(map, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<Object> list(HttpServletRequest request) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		Iterable<User> lists = userService.selectAll();
+		map.put("data", lists);
 		return new ResponseEntity<>(map, HttpStatus.OK);
 	}
 
