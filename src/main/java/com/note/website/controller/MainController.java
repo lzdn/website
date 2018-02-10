@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,8 +31,13 @@ public class MainController extends BaseController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public String add(HttpServletRequest request) {
+	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
+	public String welcome(HttpServletRequest request) {
+		return "page/welcome";
+	}
+	
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String index(HttpServletRequest request) {
 		return "index";
 	}
 
@@ -67,4 +73,20 @@ public class MainController extends BaseController {
 		return new ResponseEntity<>(map, HttpStatus.OK);
 	}
 
+	@RequestMapping(value = "/find/{userId}", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<Object> find(HttpServletRequest request, @PathVariable("userId") Integer userId) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		User user = userService.findById(userId);
+		map.put("data", user);
+		return new ResponseEntity<>(map, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/delete/{userId}", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<Object> delete(HttpServletRequest request, @PathVariable("userId") Integer userId) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		userService.delete(userId);
+		return new ResponseEntity<>(map, HttpStatus.OK);
+	}
 }

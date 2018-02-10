@@ -9,4 +9,6 @@ public interface UserService {
 	Iterable<User> selectAll();
 	
 	void delete(Integer userId);
+	
+	User findById(Integer userId);
 }

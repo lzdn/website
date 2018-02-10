@@ -11,3 +11,15 @@
 
 springboot外部数据源配置
 http://blog.csdn.net/TCXP_for_wife/article/details/51115387
+
+
+缓存注解详解
+https://www.jianshu.com/p/19d8478a31cc
+
+vue
+https://www.mingtern.com/subject/9549987/
+
+http://vue.framework7.cn/index.php/Index/introduction.html
+http://vue.framework7.cn/
+
+https://www.jianshu.com/p/9c0d0702a2aa
