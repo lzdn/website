@@ -7,4 +7,6 @@ public interface UserService {
 	void addUser(User user);
 
 	Iterable<User> selectAll();
+	
+	void delete(Integer userId);
 }
