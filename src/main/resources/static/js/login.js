@@ -48,14 +48,38 @@ var Login = function () {
 	            },
 
 	            submitHandler: function (form) {
-	                window.location.href = "index.html";
+	            	 $.ajax({
+	                     type: "POST",
+	                     url: global_basePath+"/login",
+	                     data: $(".login-form").serialize(),
+	                     success:function(data){
+	                         if(data.success==true){
+	                             layer.msg(data.message, function(){ window.location.href = global_basePath+"/index"; });
+	                         }else{
+	                             layer.msg(data.error, function(){ });
+	                         }
+	                     }
+	                 });
 	            }
 	        });
 
 	        $('.login-form input').keypress(function (e) {
 	            if (e.which == 13) {
 	                if ($('.login-form').validate().form()) {
-	                    window.location.href = "index.html";
+	                	$.ajax({
+		                     type: "POST",
+		                     url: global_basePath+"/login",
+		                     data: $(".login-form").serialize(),
+		                     success:function(data){
+		                         if(data.success==true){
+		                             layer.msg(data.message, function(){
+		                            	 window.location.href = global_basePath+"/index";
+		                             });
+		                         }else{
+		                             layer.msg(data.error, function(){ });
+		                         }
+		                     }
+		                 });
 	                }
 	                return false;
 	            }
@@ -98,14 +122,14 @@ var Login = function () {
 	            },
 
 	            submitHandler: function (form) {
-	                window.location.href = "index.html";
+	            	
 	            }
 	        });
 
 	        $('.forget-form input').keypress(function (e) {
 	            if (e.which == 13) {
 	                if ($('.forget-form').validate().form()) {
-	                    window.location.href = "index.html";
+	                	
 	                }
 	                return false;
 	            }
@@ -174,7 +198,20 @@ var Login = function () {
 	            },
 
 	            submitHandler: function (form) {
-	                window.location.href = "index.html";
+	            	$.ajax({
+	                     type: "POST",
+	                     url: global_basePath+"/register",
+	                     data: $(".register-form").serialize(),
+	                     success:function(data){
+	                         if(data.success==true){
+	                             layer.msg(data.message, function(){
+	                            	 window.location.href = global_basePath+"/login";
+	                             });
+	                         }else{
+	                             layer.msg(data.error, function(){ });
+	                         }
+	                     }
+	                 });
 	            }
 	        });
 

@@ -14,7 +14,7 @@ import com.note.website.common.entity.BaseEntity;
 
 @Entity
 @Table(name = "t_user")
-@JSONType(orders = { "userId", "userName", "password", "status" })
+@JSONType(orders = { "userId", "userName", "password", "status","email" })
 public class User extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
@@ -34,6 +34,10 @@ public class User extends BaseEntity {
 
 	@Column(name = "status", length = 1, nullable = false)
 	private Integer status;
+	
+	@Column(name = "email", length = 32, nullable = false)
+	private String email;
+
 
 	public Integer getUserId() {
 		return userId;
@@ -66,11 +70,20 @@ public class User extends BaseEntity {
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", status=" + status
-				+ "]";
+				+ ", email=" + email + "]";
 	}
 
+ 
 }

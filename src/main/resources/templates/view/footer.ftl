@@ -1,7 +1,7 @@
 <#macro footer>
 <div class="footer">
 	<div class="footer-inner">
-		2013 &copy; Metronic by keenthemes.Collect from <a href="http://www.cssmoban.com/" title="网站模板" target="_blank">网站模板</a> - More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a>
+		后台管理系统
 	</div>
 	<div class="footer-tools">
 		<span class="go-top">

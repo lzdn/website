@@ -23,12 +23,17 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@CachePut(key = "#user.userId+'cache'") // 刷新缓存
 	@Transactional(value = "notecoreTransactionManager")
-	public void addUser(User user) {
-		userRepository.save(user);
+	public void addUser(User user) throws Exception {
+		User tmp = userRepository.userByUserName(user.getUserName());
+		if(tmp==null) {
+			userRepository.save(user);
+		}else {
+			throw new Exception("用户名已经存在");
+		}
 	}
 
 	@Override
-	@Cacheable(keyGenerator = "wiselyKeyGenerator") // 使用自定义key
+	//@Cacheable(keyGenerator = "wiselyKeyGenerator") // 使用自定义key
 	public Iterable<User> selectAll() {
 		return userRepository.findAll();
 	}
@@ -43,6 +48,16 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User findById(Integer userId) {
 		return userRepository.findOne(userId);
+	}
+
+	@Override
+	public User loginByUserNameAndPassword(User user) {
+		return userRepository.loginByUserNameAndPassword(user.getUserName(),user.getPassword());
+	}
+
+	@Override
+	public User userByUserName(String userName) {
+		return userRepository.userByUserName(userName);
 	}
 
 }

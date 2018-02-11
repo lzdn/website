@@ -36,14 +36,24 @@ public class MainController extends BaseController {
 		return "page/welcome";
 	}
 	
+	/*@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(HttpServletRequest request) {
+		return "login";
+	}*/
+	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(HttpServletRequest request) {
 		return "index";
 	}
+	
+	@RequestMapping(value = "/userlist", method = RequestMethod.GET)
+	public String userlist(HttpServletRequest request) {
+		return "page/user/list";
+	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<Object> add(HttpServletRequest request, @Valid User user, BindingResult bindingResult) {
+	public ResponseEntity<Object> add(HttpServletRequest request, @Valid User user, BindingResult bindingResult) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
 		logger.debug("保存");
 

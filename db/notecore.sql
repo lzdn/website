@@ -47,5 +47,6 @@ CREATE TABLE `t_user` (
   `password` varchar(15) NOT NULL,
   `status` int(11) NOT NULL,
   `user_name` varchar(15) NOT NULL,
+  `email` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
