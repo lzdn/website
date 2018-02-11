@@ -35,9 +35,9 @@
 	<link rel="shortcut icon" href="static/image/favicon.ico" />
 	
 	<!--JAVASCRIPT -->
-	<script src="/static/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+	<script src="static/js/jquery-1.10.1.min.js" type="text/javascript"></script>
 	<!--JAVASCRIPT -->
-	<script src="/static/layer/layer.js" type="text/javascript"></script>  
+	<script src="static/layer/layer.js" type="text/javascript"></script>  
 		
 	<script language="javascript">
 		var global_basePath = "${basePath}";
@@ -90,7 +90,7 @@
 
 						<i class="icon-user"></i>
 
-						<input class="m-wrap placeholder-no-fix" type="text" placeholder="Username" name="userName"/>
+						<input class="m-wrap placeholder-no-fix" type="text" placeholder="Username" name="username"/>
 
 					</div>
 
@@ -120,7 +120,7 @@
 
 				<label class="checkbox">
 
-				<input type="checkbox" name="remember" value="1"/> Remember me
+				<input type="checkbox" name="remember-me" value="1"/> Remember me
 
 				</label>
 

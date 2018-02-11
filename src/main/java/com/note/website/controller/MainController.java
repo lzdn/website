@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -42,6 +43,7 @@ public class MainController extends BaseController {
 	}*/
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	@PreAuthorize("hasRole('ADMIN')")
 	public String index(HttpServletRequest request) {
 		return "index";
 	}

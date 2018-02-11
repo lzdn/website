@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.note.website.common.web.BaseController;
 import com.note.website.core.entity.User;
 import com.note.website.service.UserService;
+import com.note.website.utils.MD5Util;
 
 @Controller
 public class LoginController extends BaseController {
@@ -62,6 +63,7 @@ public class LoginController extends BaseController {
 		}else {
 			try {
 				user.setStatus(1);
+				user.setPassword(MD5Util.encode(user.getPassword()));
 				userService.addUser(user);
 				map.put("success", true);
 				map.put("message", "注册成功");

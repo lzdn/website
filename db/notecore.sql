@@ -50,3 +50,12 @@ CREATE TABLE `t_user` (
   `email` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `persistent_logins`;
+CREATE TABLE persistent_logins (
+  username varchar(64) not null,
+  series varchar(64) not null,
+  token varchar(64) not null,
+  last_used timestamp not null,
+  PRIMARY KEY (series)
+);
