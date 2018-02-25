@@ -23,7 +23,7 @@ public class Role extends BaseEntity {
 	@Column(name = "role_id")
 	private Integer roleId;
 
-	@Column(name = "role_name", length = 32, nullable = false)
+	@Column(name = "role_name", length = 50, nullable = false)
 	private String roleName;
 	
  

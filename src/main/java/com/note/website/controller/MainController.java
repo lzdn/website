@@ -43,7 +43,7 @@ public class MainController extends BaseController {
 	}*/
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	@PreAuthorize("hasRole('ADMIN')")
+//	@PreAuthorize("hasRole('ADMIN')")
 	public String index(HttpServletRequest request) {
 		return "index";
 	}

@@ -19,8 +19,8 @@ import com.note.website.common.entity.BaseEntity;
 
 @Entity
 @Table(name = "t_user")
-@JSONType(orders = { "userId", "userName", "password", "status","email" })
-public class User extends BaseEntity implements UserDetails{
+@JSONType(orders = { "userId", "userName", "password", "status", "email" })
+public class User extends BaseEntity implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
 
@@ -30,7 +30,7 @@ public class User extends BaseEntity implements UserDetails{
 	private Integer userId;
 
 	@NotBlank(message = "姓名不能为空")
-	@Column(name = "user_name", length = 15, nullable = false)
+	@Column(name = "user_name", length = 50, nullable = false)
 	private String userName;
 
 	@NotBlank(message = "密码不能为空")
@@ -39,10 +39,9 @@ public class User extends BaseEntity implements UserDetails{
 
 	@Column(name = "status", length = 1, nullable = false)
 	private Integer status;
-	
-	@Column(name = "email", length = 32, nullable = false)
-	private String email;
 
+	@Column(name = "email", length = 50, nullable = false)
+	private String email;
 
 	public Integer getUserId() {
 		return userId;
@@ -75,7 +74,7 @@ public class User extends BaseEntity implements UserDetails{
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -83,11 +82,9 @@ public class User extends BaseEntity implements UserDetails{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
 
 	@Transient
 	private List<? extends GrantedAuthority> authorities;
-
 
 	public List<? extends GrantedAuthority> getAuthorities() {
 		return authorities;
@@ -97,12 +94,11 @@ public class User extends BaseEntity implements UserDetails{
 		this.authorities = authorities;
 	}
 
-
 	@Override
 	public String getUsername() {
 		return this.userName;
 	}
-	 
+
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
@@ -129,5 +125,4 @@ public class User extends BaseEntity implements UserDetails{
 				+ ", email=" + email + "]";
 	}
 
- 
 }

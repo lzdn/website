@@ -21,9 +21,9 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `t_dict`;
 CREATE TABLE `t_dict` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `dict_name` varchar(32) NOT NULL,
-  `dict_type` varchar(32) NOT NULL,
-  `dict_value` varchar(32) DEFAULT NULL,
+  `dict_name` varchar(50) NOT NULL,
+  `dict_type` varchar(50) NOT NULL,
+  `dict_value` varchar(50) DEFAULT NULL,
   `order_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -34,7 +34,7 @@ CREATE TABLE `t_dict` (
 DROP TABLE IF EXISTS `t_role`;
 CREATE TABLE `t_role` (
   `role_id` int(11) NOT NULL AUTO_INCREMENT,
-  `role_name` varchar(32) NOT NULL,
+  `role_name` varchar(50) NOT NULL,
   PRIMARY KEY (`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -44,18 +44,44 @@ CREATE TABLE `t_role` (
 DROP TABLE IF EXISTS `t_user`;
 CREATE TABLE `t_user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `password` varchar(15) NOT NULL,
+  `password` varchar(128) NOT NULL,
   `status` int(11) NOT NULL,
-  `user_name` varchar(15) NOT NULL,
-  `email` varchar(32) DEFAULT NULL,
+  `user_name` varchar(50) NOT NULL,
+  `email` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `t_user_role`;
+CREATE TABLE `t_user_role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL ,
+  `role_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `t_permission`;
+CREATE TABLE `t_permission` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) NOT NULL,
+  `url` varchar(128) NOT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `pid` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `t_role_permission`;
+CREATE TABLE `t_role_permission` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `permission_id` int(11) DEFAULT NULL,
+  `role_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `persistent_logins`;
 CREATE TABLE persistent_logins (
-  username varchar(64) not null,
-  series varchar(64) not null,
-  token varchar(64) not null,
+  username varchar(128) not null,
+  series varchar(128) not null,
+  token varchar(128) not null,
   last_used timestamp not null,
   PRIMARY KEY (series)
 );

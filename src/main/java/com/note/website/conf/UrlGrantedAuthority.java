@@ -2,39 +2,40 @@ package com.note.website.conf;
 
 import org.springframework.security.core.GrantedAuthority;
 
- 
 public class UrlGrantedAuthority implements GrantedAuthority {
 
-    /**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private String permissionUrl;
-    private String method;
+	private String name;
 
-    public String getPermissionUrl() {
-        return permissionUrl;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setPermissionUrl(String permissionUrl) {
-        this.permissionUrl = permissionUrl;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getMethod() {
-        return method;
-    }
+	public UrlGrantedAuthority(String permissionUrl, String name) {
+		this.permissionUrl = permissionUrl;
+		this.name = name;
+	}
 
-    public void setMethod(String method) {
-        this.method = method;
-    }
+	public String getPermissionUrl() {
+		return permissionUrl;
+	}
 
-    public UrlGrantedAuthority (String permissionUrl, String method) {
-        this.permissionUrl = permissionUrl;
-        this.method = method;
-    }
+	public void setPermissionUrl(String permissionUrl) {
+		this.permissionUrl = permissionUrl;
+	}
 
-    @Override
-    public String getAuthority() {
-        return this.permissionUrl + ";"+this.method;
-    }
+ 
+	@Override
+	public String getAuthority() {
+		return this.name ;
+	}
+
 }

@@ -22,16 +22,16 @@ public class Dict extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
-	
-	@Column(name = "dict_name", length = 32, nullable = false)
+
+	@Column(name = "dict_name", length = 50, nullable = false)
 	private String dictName;
-	
-	@Column(name = "dict_type", length = 32, nullable = false)
+
+	@Column(name = "dict_type", length = 50, nullable = false)
 	private String dictType;
-	
-	@Column(name = "dict_value", length = 32)
+
+	@Column(name = "dict_value", length = 50)
 	private String dictValue;
-	
+
 	@Column(name = "order_by", length = 3)
 	private Integer orderBy;
 
@@ -80,6 +80,5 @@ public class Dict extends BaseEntity {
 		return "Dict [id=" + id + ", dictName=" + dictName + ", dictType=" + dictType + ", dictValue=" + dictValue
 				+ ", orderBy=" + orderBy + "]";
 	}
-	
 
 }

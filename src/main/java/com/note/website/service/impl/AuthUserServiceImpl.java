@@ -11,33 +11,33 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.note.website.conf.UrlGrantedAuthority;
+import com.note.website.core.entity.Permission;
 import com.note.website.core.entity.User;
+import com.note.website.core.repository.PermissionRepository;
 import com.note.website.core.repository.UserRepository;
- 
 
 @Service("authUserService")
 public class AuthUserServiceImpl implements UserDetailsService {
 
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private PermissionRepository permissionRepository;
 
 	@Override
-	public UserDetails loadUserByUsername(String userName) { // 重写loadUserByUsername 方法获得 userdetails 类型用户
-
+	public UserDetails loadUserByUsername(String userName) {
+		// 重写loadUserByUsername 方法获得 userdetails 类型用户
 		User user = userRepository.userByUserName(userName);
 		if (user != null) {
-		//	List<Permission> permissions = permissionDao.getByUserId(user.getId());
+			List<Permission> permissions = permissionRepository.getUserPermissionByUserId(user.getUserId());
 			List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-			GrantedAuthority grantedAuthority =new UrlGrantedAuthority("/index","index");
-			grantedAuthorities.add(grantedAuthority);
-			/*for (Permission permission : permissions) {
+			for (Permission permission : permissions) {
 				if (permission != null && permission.getName() != null) {
-					GrantedAuthority grantedAuthority = new UrlGrantedAuthority(permission.getPermissionUrl(),
-							permission.getMethod());
+					GrantedAuthority grantedAuthority = new UrlGrantedAuthority(permission.getUrl(),
+							permission.getName());
 					grantedAuthorities.add(grantedAuthority);
 				}
-			}*/
-			//user.setGrantedAuthorities(grantedAuthorities);
+			}
 			user.setAuthorities(grantedAuthorities);
 			return user;
 		} else {
